@@ -1,248 +1,121 @@
-/* Load Univers Light Condensed font */
+/* ===============================
+   Saeloon Article Styles
+   Max Payne Font: Univers Light Condensed
+   =============================== */
+
+/* Load the font */
 @font-face {
     font-family: "UniversLightCondensed";
     src: url("assets/fonts/UniversLightCondensed.ttf") format("truetype");
-    font-weight: 300; /* light */
+    font-weight: 300;
     font-style: normal;
 }
 
-/* Apply to entire page */
+/* Global font */
 body {
     font-family: "UniversLightCondensed", Arial, sans-serif;
-    font-size: 14px; /* Max Payne style */
-}
-
-/* Optional: headings and infobox */
-h1, h2, h3 {
-    font-family: "UniversLightCondensed", Arial, sans-serif;
-    font-weight: 300;
-}
-
-.infobox th, .infobox td {
-    font-family: "UniversLightCondensed", Arial, sans-serif;
-}
-
-/* General body */
-body {
-  font-family: "Linux Libertine", "Georgia", "Times New Roman", serif;
-  line-height: 1.6;
-  background: #fff;
-  color: #202122;
-  margin: 0;
-  padding: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    text-shadow: 0.2px 0 #000; /* optional for light font */
 }
 
 /* Container */
 .container {
-  max-width: 1000px; /* made wider */
-  margin: auto;
-  padding: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Site header */
+/* Header */
 .site-header {
-  border-bottom: 1px solid #aaa;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
-
-/* Header links */
-.site-header a {
-  color: #0645ad;
-  text-decoration: none;
-}
-
-.site-header a:hover {
-  text-decoration: underline;
-}
-
-/* Tagline below header */
-.tagline {
-  color: #555;
-  font-size: 0.9em;
-}
-
-/* Table of Contents */
-.toc {
-  font-size: 0.85em;
-  margin-top: 6px;
-}
-
-.toc ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.toc li {
-  margin: 2px 0;
-}
+.site-header h1 a { color:#000; text-decoration:none; }
+.tagline { font-size:12px; color:#555; margin:0; }
 
 /* Infobox */
 .infobox {
-  border: 1px solid #aaa;
-  background: #f9f9f9;
-  padding: 10px;
-  width: 300px; /* wider */
-  float: right;
-  margin: 0 0 10px 20px;
-  font-size: 0.9em;
+    width: 300px;
+    border: 1px solid #aaa;
+    padding: 5px;
+    margin: 0 0 20px 20px;
+    float: right;
+    font-size: 90%;
+    background: #f9f9f9;
 }
+.infobox caption { font-weight:bold; font-size:125%; text-align:center; margin-bottom:6px; }
+.infobox table { width:100%; border-collapse:collapse; }
+.infobox th { text-align:left; background:#f2f2f2; padding:4px; font-weight:500; }
+.infobox td { padding:4px; vertical-align:top; }
+.infobox img { width:100%; border:1px solid #ddd; }
+.infobox audio { width:100%; margin-top:5px; }
 
-.infobox table {
-  width: 100%;
-  border-collapse: collapse;
+/* Collapsible headings */
+.collapsible-heading {
+    cursor: pointer;
+    position: relative;
+    padding-right: 20px;
+    margin-top: 20px;
 }
-
-.infobox th {
-  background-color: #f2f2f2;
-  text-align: left;
-  padding: 6px;
-  border: 1px solid #aaa;
+.collapsible-heading::after {
+    content: '\25B6'; /* right triangle */
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    transition: transform 0.2s;
 }
-
-.infobox td {
-  padding: 6px;
-  border: 1px solid #aaa;
+.collapsible-heading.active::after {
+    transform: rotate(90deg);
 }
-
-.infobox caption {
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 6px;
-}
-
-/* Infobox images */
-.infobox img {
-  display: block;
-  margin: auto;
-  max-width: 100%;
-  height: auto;
-}
-
-/* Article content */
-.article-content h2 {
-  border-bottom: 1px solid #aaa;
-  padding-bottom: 4px;
-  margin-top: 24px;
-  margin-bottom: 12px;
-  font-size: 1.4em;
-}
-
-.article-content h3 {
-  margin-top: 18px;
-  margin-bottom: 8px;
-  font-size: 1.2em;
-  cursor: pointer; /* pointer to indicate collapsible */
-}
-
-/* Collapsible content */
 .collapsible-content {
-  display: block;
-  padding: 0 10px 10px 10px;
+    display: none;
+    padding-left: 10px;
+    border-left: 2px solid #ccc;
+    margin-bottom: 10px;
 }
 
-/* Paragraphs */
-.article-content p {
-  margin-bottom: 12px;
+/* Article */
+.article-content {
+    overflow: hidden;
 }
+.article-content h2 { border-bottom:1px solid #ccc; padding-bottom:4px; margin-top:30px; }
+.article-content h3 { margin-top:20px; }
 
 /* Gallery */
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
 }
-
 .gallery img {
-  max-width: calc(50% - 4px);
-  border: 1px solid #aaa;
-  padding: 2px;
-  background: #fff;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
+    width: calc(33% - 6px);
+    border:1px solid #ddd;
+    padding:2px;
 }
 
 /* Footer */
 .site-footer {
-  border-top: 1px solid #aaa;
-  padding: 12px 0;
-  margin-top: 30px;
-  font-size: 0.85em;
-  color: #555;
-  text-align: center;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+    font-size:12px;
+    color:#555;
 }
 
-/* RTL support for Arabic page */
-html[dir="rtl"] .infobox {
-  float: left;
-  margin: 0 20px 10px 0;
-}
+/* Links */
+a { color:#0645ad; text-decoration:none; }
+a:hover { text-decoration:underline; }
 
-html[dir="rtl"] .site-header div {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .toc {
-  text-align: right;
-}
-
-html[dir="rtl"] .gallery {
-  flex-direction: row-reverse;
-}.article-content h3 {
-  margin-top: 18px;
-  margin-bottom: 8px;
-  font-size: 1.2em;
-}
-
-/* Paragraphs */
-.article-content p {
-  margin-bottom: 12px;
-}
-
-/* Gallery */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0;
-}
-
-.gallery img {
-  max-width: calc(50% - 4px);
-  border: 1px solid #aaa;
-  padding: 2px;
-  background: #fff;
-}
-
-/* Footer */
-.site-footer {
-  border-top: 1px solid #aaa;
-  padding: 12px 0;
-  margin-top: 30px;
-  font-size: 0.85em;
-  color: #555;
-  text-align: center;
-}
-
-/* RTL support for Arabic page */
-html[dir="rtl"] .infobox {
-  float: left;
-  margin: 0 10px 10px 0;
-}
-
-html[dir="rtl"] .site-header div {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .toc {
-  text-align: right;
-}
-
-html[dir="rtl"] .gallery {
-  flex-direction: row-reverse;
+/* Responsive */
+@media (max-width:768px) {
+    .infobox { width:100%; float:none; margin:0 0 20px 0; }
+    .gallery img { width:100%; }
 }
