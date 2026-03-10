@@ -3,16 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   headings.forEach(heading => {
     heading.addEventListener('click', function() {
-      heading.classList.toggle('active');
-
-      // Find the next sibling that has class "collapsible-content"
-      let content = heading.nextElementSibling;
-      while(content && !content.classList.contains('collapsible-content')) {
-        content = content.nextElementSibling;
-      }
-
-      if(content) {
-        content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+      heading.classList.toggle('active'); // toggles the arrow rotation
+      const content = heading.nextElementSibling;
+      if(content && content.classList.contains('collapsible-content')) {
+        // Toggle display in one click
+        if(content.style.display === 'block') {
+          content.style.display = 'none';
+        } else {
+          content.style.display = 'block';
+        }
       }
     });
   });
