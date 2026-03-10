@@ -3,176 +3,143 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>السايلون — مقال</title>
+<title>سايلون — المقال</title>
 <link rel="stylesheet" href="styles.css">
-
-<style>
-/* Infobox styling */
-.infobox {
-  float: right;
-  width: 260px;
-  margin: 0 0 1em 1em;
-  border: 1px solid #aaa;
-  padding: 0.5em;
-  font-size: 90%;
-  background: #f9f9f9;
-}
-
-.infobox th {
-  background: #f2f2f2;
-  text-align: left;
-  padding: 0.2em 0.5em;
-}
-
-.infobox td {
-  padding: 0.2em 0.5em;
-}
-
-.infobox img {
-  width: 100%;
-  height: auto;
-  border: 1px solid #ddd;
-}
-
-/* Collapsible sections */
-.collapsible {
-  cursor: pointer;
-  padding: 8px;
-  font-weight: bold;
-  background-color: #eee;
-  border: none;
-  text-align: right;
-  outline: none;
-  width: 100%;
-}
-
-.active, .collapsible:hover {
-  background-color: #ccc;
-}
-
-.collapsible-content {
-  display: none;
-  padding: 0 1em;
-  overflow: hidden;
-}
-
-/* Gallery styling */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-}
-
-.gallery img {
-  max-width: 120px;
-  height: auto;
-  border: 1px solid #ccc;
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  var coll = document.getElementsByClassName("collapsible");
-  for (var i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      content.style.display = (content.style.display === "block") ? "none" : "block";
-    });
-  }
-});
-</script>
-
 </head>
-<body dir="rtl">
+<body>
 <div id="content">
-
 <header class="site-header container">
-  <div style="display:flex;justify-content:space-between;align-items:center;">
+  <div style="display:flex;justify-content:space-between;align-items:center; flex-direction: row-reverse;">
     <div>
-      <h1 style="margin:0;"><a href="index.html">السايلون</a></h1>
-      <p class="tagline" style="margin:4px 0 0;">مجتمع إلكتروني خيالي بأسلوب الدول الصغيرة (2020–2024)</p>
+      <h1 style="margin:0;"><a href="index.html">سايلون</a></h1>
+      <div class="toc">
+        <b>المحتويات</b>
+        <ul>
+          <li><a href="#affiliations">1 الروابط والشراكات</a></li>
+          <li><a href="#background">2 الخلفية</a></li>
+          <li><a href="#name-identity">3 الاسم والهوية</a></li>
+          <li><a href="#symbolism">4 الرمزية والعلم</a></li>
+          <li><a href="#organization">5 التنظيم والعضوية</a></li>
+          <li><a href="#incidents">6 الحوادث</a></li>
+          <li><a href="#influences">7 التأثيرات والتغيير</a></li>
+          <li><a href="#dissolution">8 حل المجتمع</a></li>
+          <li><a href="#legacy">9 الإرث</a></li>
+          <li><a href="#gallery">10 معرض الصور</a></li>
+        </ul>
+      </div>
+      <p class="tagline" style="margin:4px 0 0;">مجتمع افتراضي بأسلوب الدول الصغيرة (2020–2024)</p>
     </div>
     <div style="text-align:left;">
-      <a href="saeloon.html" style="font-size:14px; text-decoration:none;">English</a>
+      <a href="saeloon_en.html" style="font-size:14px; text-decoration:none;">English</a>
     </div>
   </div>
 </header>
 
 <main class="container">
+  <div class="article-body">
 
-<aside class="infobox" aria-label="Infobox">
-  <caption>السايلون</caption>
-  <table style="width:100%; border-collapse:collapse">
-    <tr><th>النوع</th><td>مجتمع إلكتروني خيالي / دولة صغيرة افتراضية</td></tr>
-    <tr><th>التأسيس</th><td>2020</td></tr>
-    <tr><th>الحل</th><td>5 نوفمبر 2024</td></tr>
-    <tr><th>المؤسس</th><td>محمد خالد (Kahk alit)</td></tr>
-    <tr><th>القادة المشاركون</th><td>ساجد خالد؛ محمد أيمن</td></tr>
-    <tr><th>العلم</th><td><img src="assets/Saeloon_flag.jpg" alt="علم السايلون"></td></tr>
-    <tr><th>النشيد الوطني</th>
-      <td>
-        النشيد الوطني للسايلون<br>
-        <audio controls preload="none" style="width:100%; margin-top:6px">
-          <source src="assets/Saeloon_anthem.ogg" type="audio/ogg">
-          متصفحك لا يدعم الصوت.
-        </audio>
-      </td>
-    </tr>
-  </table>
-</aside>
+    <!-- infobox -->
+    <aside class="infobox" aria-label="Infobox">
+      <caption>سايلون</caption>
+      <table>
+        <tr><th>النوع</th><td>مجتمع افتراضي / دولة صغيرة افتراضية</td></tr>
+        <tr><th>التأسيس</th><td>2020</td></tr>
+        <tr><th>الحل</th><td>5 نوفمبر 2024</td></tr>
+        <tr><th>المؤسس</th><td>محمد خالد (كاهك أليت)</td></tr>
+        <tr><th>القادة المشاركون</th><td>ساجد خالد؛ محمد أيمن</td></tr>
+        <tr><th>العلم</th><td><img src="assets/Saeloon_flag.jpg" alt="علم سايلون"></td></tr>
+        <tr><th>النشيد الوطني</th>
+          <td>
+            النشيد الوطني للسايلون<br>
+            <audio controls preload="none">
+              <source src="assets/Saeloon_anthem.ogg" type="audio/ogg">
+              متصفحك لا يدعم تشغيل الصوت.
+            </audio>
+          </td>
+        </tr>
+      </table>
+    </aside>
 
-<article class="article-content">
+    <!-- article content -->
+    <article class="article-content">
 
-<h2 id="history">تاريخ</h2>
-<p><strong>السايلون</strong> هو مجتمع إلكتروني غير رسمي بدأ عام 2020 كمجموعة خاصة على فيسبوك ماسنجر. بالرغم من كونه ليس دولة حقيقية، اعتمد السايلون رموزًا وألقابًا وعلمًا لإنشاء هوية مشتركة بين الأعضاء. هذه الصفحة تؤرشف تاريخ المجموعة ووسائطها ومحادثاتها المختارة.</p>
+      <h2 id="affiliations" class="collapsible-heading">الروابط والشراكات</h2>
+      <div class="collapsible-content">
+        <p>كان لسايلون روابط مع مجموعتين افتراضيتين. هذه المعلومات مستمدة من شهادات المشاركين:</p>
+        <ul>
+          <li><strong>SIMP / WHYTBS:</strong> دردشة مستقلة سابقة ارتبط بها بعض مؤسسي سايلون.</li>
+          <li><strong>صالون فوزي الثقافي:</strong> دائرة ثقافية غير رسمية تتقاطع مع سايلون.</li>
+        </ul>
+      </div>
 
-<button class="collapsible">خلفية</button>
-<div class="collapsible-content">
-<p>تأسس السايلون في 2020 على يد محمد خالد وعدد قليل من الأصدقاء. بدأ كمكان للميمات والدردشة اليومية والثقافة المشتركة. في 2021 صمّم المؤسس علمًا بسيطًا أبيض وأسود لخلق هوية متسقة للمجموعة.</p>
-</div>
+      <h2 id="background" class="collapsible-heading">الخلفية</h2>
+      <div class="collapsible-content">
+        <p>تأسس سايلون عام 2020 بواسطة محمد خالد ومجموعة صغيرة من الأصدقاء. بدأ كمكان للميمات والدردشات اليومية والمحتوى الثقافي.</p>
+      </div>
 
-<button class="collapsible">الانتماءات</button>
-<div class="collapsible-content">
-<p><strong>SIMP / WHYTBS:</strong> مجموعة دردشة سابقة، اعتبرت في وقت لاحق مشكلة. كان كل من Kahk و JackDaPrince أعضاء؛ وكان Kahk من المؤسسين.</p>
-<p><strong>صالون فوزي الثقافي:</strong> دائرة ثقافية؛ أحمد FwZzy هو القائد. كان Kahk عضوًا محترمًا وأحيانًا قائدًا. تُعتبر المجموعة شقيقة للسايلون؛ فشل مشروع الدمج بسبب خلافات بين الأعضاء.</p>
-</div>
+      <h2 id="name-identity" class="collapsible-heading">الاسم والهوية</h2>
+      <div class="collapsible-content">
+        <p>في 2021 اقترح محمد خالد هوية ثابتة للمجموعة باسم "سايلون"، لتوفير استمرارية للنكات والثيمات الداخلية.</p>
+      </div>
 
-<button class="collapsible">الحوادث البارزة</button>
-<div class="collapsible-content">
-<p><strong>حادثة أحماليد:</strong> غادر أحماليد بعد صراع وتم حظره من السايلون.</p>
-<p><strong>حادثة مازن الأمنية:</strong> شهد Kahk صراعات مع مازن محمد، ما أدى إلى حظر مجموعة الفيسبوك وحرق لوحة أم هاتف Kahk. بعد ذلك أمّن Kahk حساباته الجديدة واستمر بالسايلون.</p>
-</div>
+      <h2 id="symbolism" class="collapsible-heading">الرمزية والعلم</h2>
+      <div class="collapsible-content">
+        <p>صمم محمد خالد علماً بسيطاً بالأسود والأبيض على شكل جمجمة مستوحى من رمزية القراصنة، واستخدم كرمز داخلي.</p>
+      </div>
 
-<button class="collapsible">المعرض</button>
-<div class="collapsible-content">
-  <div class="gallery">
-    <img src="assets/Maadi.jpg" alt="المعادي">
-    <img src="assets/Alex.jpg" alt="كورنيش الإسكندرية">
-    <img src="assets/Giza.jpg" alt="أهرامات الجيزة">
-    <img src="assets/1280px-Cairo_Tower_and_Qasr_El_Nil_Bridge.jpg" alt="برج القاهرة">
-    <img src="assets/Faculty_of_arts_in_Alexandria_University.jpg" alt="جامعة الإسكندرية">
-    <img src="assets/Banha.jpg" alt="بنها">
-    <img src="assets/Little_St_James_Island_(9123420726).jpg" alt="جزيرة ليتل سانت جيمس">
-    <img src="assets/Jeffrey_Epstein_mug_shot.jpg" alt="إبشتاين">
+      <h2 id="organization" class="collapsible-heading">التنظيم والعضوية</h2>
+      <div class="collapsible-content">
+        <p>لم يكن هناك حكم رسمي أو أرض محددة. القيادة كانت غير رسمية تعتمد على المشاركة والنفوذ الاجتماعي. العضوية كانت متقلبة، مع مجموعة أساسية من المؤسسين.</p>
+      </div>
+
+      <h2 id="incidents" class="collapsible-heading">الحوادث</h2>
+      <div class="collapsible-content">
+        <p><strong>أحمليض:</strong> أصغر عضو غادر بعد نزاع.</p>
+        <p><strong>مازن:</strong> نزاع أمني وشخصي خلال 2020–2022.</p>
+      </div>
+
+      <h2 id="influences" class="collapsible-heading">التأثيرات والتغيير</h2>
+      <div class="collapsible-content">
+        <p>أثر على المجموعة الثقافة الرقمية ووسائل الإعلام البديلة، وعمل جاك ستوبير كمصدر إلهام. تغييرات في حياة الأعضاء أثرت على الديناميكية.</p>
+      </div>
+
+      <h2 id="dissolution" class="collapsible-heading">حل المجتمع</h2>
+      <div class="collapsible-content">
+        <p>في 5 نوفمبر 2024 أعلن محمد خالد إغلاق المجموعة العامة. الرسالة الأخيرة:</p>
+        <blockquote>
+          "@الكل، هذا سيكون كافياً أيها الرفاق، ويجب أن نرحل الآن، لكن سايلون سيبقى في قلوبنا إلى الأبد. أستودعكم الله."
+        </blockquote>
+      </div>
+
+      <h2 id="legacy" class="collapsible-heading">الإرث</h2>
+      <div class="collapsible-content">
+        <p>تظل هوية سايلون أرشيفية وذاكرة للمجتمع الافتراضي الصغير، وليست حركة عامة مستمرة.</p>
+      </div>
+
+      <h2 id="gallery" class="collapsible-heading">معرض الصور</h2>
+      <div class="collapsible-content gallery">
+        <img src="assets/Maadi.jpg" alt="Maadi">
+        <img src="assets/Alex.jpg" alt="Corniche الإسكندرية">
+        <img src="assets/Giza.jpg" alt="أهرامات الجيزة">
+        <img src="assets/1280px-Cairo_Tower_and_Qasr_El_Nil_Bridge.jpg" alt="برج القاهرة">
+        <img src="assets/Faculty_of_arts_in_Alexandria_University.jpg" alt="جامعة الإسكندرية">
+        <img src="assets/Banha.jpg" alt="بنها">
+        <img src="assets/Little_St_James_Island_(9123420726).jpg" alt="جزيرة ليتل سانت جيمس">
+        <img src="assets/Jeffrey_Epstein_mug_shot.jpg" alt="جيفري إبستاين">
+      </div>
+
+      <h3>المراجع والملاحظات</h3>
+      <p>المحتوى مأخوذ من محادثات خاصة وشهادات المشاركين. أرشيف مستقل.</p>
+
+      <p><a href="index.html">← العودة للصفحة الرئيسية</a></p>
+    </article>
   </div>
-</div>
-
-<button class="collapsible">المراجع والملاحظات</button>
-<div class="collapsible-content">
-<p>المحتوى مؤرشف من محادثات خاصة وشهادات المشاركين. هذا الموقع أرشيف مستقل وليس جهة إخبارية.</p>
-</div>
-
-<p><a href="index.html">← العودة إلى الصفحة الرئيسية</a></p>
-
-</article>
 </main>
 
 <footer class="site-footer container">
-  <div>© أرشيف السايلون — لا يوجد ارتباط رسمي</div>
+  <div>© أرشيف سايلون — لا يوجد ارتباط رسمي</div>
 </footer>
 
-</div>
+<script src="script.js"></script>
 </body>
 </html>
