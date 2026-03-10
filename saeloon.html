@@ -4,90 +4,107 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Saeloon — Article</title>
+<link rel="stylesheet" href="styles.css">
+
 <style>
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background: #f9f9f9;
-  margin: 0;
-  padding: 0;
-}
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1em;
-}
-a { text-decoration: none; color: #0645AD; }
-a:hover { text-decoration: underline; }
-
-.site-header, .site-footer {
-  background: #f2f2f2;
-  padding: 1em;
-  border-bottom: 1px solid #ccc;
-}
-
-.site-footer { border-top: 1px solid #ccc; text-align: center; font-size: 0.9em; }
-
+/* Infobox styling */
 .infobox {
-  width: 300px;
   float: right;
+  width: 260px;
   margin: 0 0 1em 1em;
   border: 1px solid #aaa;
-  background: #fdfdfd;
   padding: 0.5em;
   font-size: 90%;
+  background: #f9f9f9;
 }
-.infobox table { width: 100%; border-collapse: collapse; }
-.infobox th { background: #f2f2f2; text-align: left; padding: 0.2em; width: 40%; }
-.infobox td { padding: 0.2em; }
 
-.article-content h3 {
+.infobox th {
+  background: #f2f2f2;
+  text-align: left;
+  padding: 0.2em 0.5em;
+}
+
+.infobox td {
+  padding: 0.2em 0.5em;
+}
+
+.infobox img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+}
+
+/* Collapsible sections */
+.collapsible {
   cursor: pointer;
-  margin-top: 1.5em;
-  background: #e6e6e6;
-  padding: 0.3em 0.5em;
-  border-left: 4px solid #888;
+  padding: 8px;
+  font-weight: bold;
+  background-color: #eee;
+  border: none;
+  text-align: left;
+  outline: none;
+  width: 100%;
 }
-.collapsible-content { display: block; padding-left: 0.5em; }
 
-.gallery { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1em; }
-.gallery img { width: calc(33% - 10px); border: 1px solid #ddd; }
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
 
-.toc { margin: 0.5em 0; font-size: 0.9em; }
-.toc ul { padding-left: 1em; }
-.toc li { margin: 0.2em 0; }
+.collapsible-content {
+  display: none;
+  padding: 0 1em;
+  overflow: hidden;
+}
+
+/* Gallery styling */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.gallery img {
+  max-width: 120px;
+  height: auto;
+  border: 1px solid #ccc;
+}
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var coll = document.getElementsByClassName("collapsible");
+  for (var i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      content.style.display = (content.style.display === "block") ? "none" : "block";
+    });
+  }
+});
+</script>
+
 </head>
 <body>
-<div class="container">
+<div id="content">
 
-<header class="site-header">
+<header class="site-header container">
   <div style="display:flex;justify-content:space-between;align-items:center;">
     <div>
       <h1 style="margin:0;"><a href="index.html">Saeloon</a></h1>
-      <div class="toc">
-        <b>Contents</b>
-        <ul>
-          <li><a href="#background">1 Background</a></li>
-          <li><a href="#affiliations">2 Affiliations</a></li>
-          <li><a href="#incidents">3 Incidents</a></li>
-          <li><a href="#symbolism">4 Symbolism & Flag</a></li>
-          <li><a href="#organization">5 Organization</a></li>
-          <li><a href="#gallery">6 Gallery</a></li>
-          <li><a href="#dissolution">7 Dissolution</a></li>
-        </ul>
-      </div>
-      <p class="tagline">A fictional micronation-style online community (2020–2024)</p>
+      <p class="tagline" style="margin:4px 0 0;">A fictional micronation-style online community (2020–2024)</p>
     </div>
     <div style="text-align:right;">
-      <a href="saeloon_ar.html">العربية</a>
+      <a href="saeloon_ar.html" style="font-size:14px; text-decoration:none;">العربية</a>
     </div>
   </div>
 </header>
 
+<main class="container">
+
 <aside class="infobox" aria-label="Infobox">
   <caption>Saeloon</caption>
-  <table>
+  <table style="width:100%; border-collapse:collapse">
     <tr><th>Type</th><td>Fictional micronation / online community</td></tr>
     <tr><th>Founded</th><td>2020</td></tr>
     <tr><th>Dissolved</th><td>5 November 2024</td></tr>
@@ -108,69 +125,54 @@ a:hover { text-decoration: underline; }
 
 <article class="article-content">
 
-<h3 id="background">Background</h3>
+<h2 id="history">History</h2>
+<p><strong>Saeloon</strong> is an informal online community that began in 2020 as a private Facebook Messenger group. Although not a real country, Saeloon adopted symbols, nicknames, and a flag to create a shared identity among members. This page archives the group's history, media, and selected conversations.</p>
+
+<button class="collapsible">Background</button>
 <div class="collapsible-content">
-<p>Saeloon was founded in 2020 by Mohamed Khaled and a small circle of friends. It began as a private Facebook Messenger group...</p>
-<p>The group focused on memes, daily conversation, and shared culture...</p>
+<p>Saeloon was founded in 2020 by Mohamed Khaled and a small circle of friends. It started as a place for memes, everyday chat, and shared culture. In 2021 the founder designed a simple black-and-white skull flag to give the group a consistent identity.</p>
 </div>
 
-<h3 id="affiliations">Affiliations</h3>
+<button class="collapsible">Affiliations</button>
 <div class="collapsible-content">
-<p><strong>SIMP / WHYTBS:</strong> A former problematic group; Kahk was one of its founders...</p>
-<p><strong>Salon Fawzi Cultural:</strong> Led by Ahmed FwZzy; sometimes collaborated with Saeloon...</p>
+<p><strong>SIMP / WHYTBS:</strong> Former group chat, problematic association. Kahk and JackDaPrince were members; Kahk was a founder.</p>
+<p><strong>Salon Fawzi Cultural:</strong> Cultural circle; Ahmed FwZzy is the leader. Kahk was sometimes a leader and a respected member. It was a twin group to Saeloon; migration plan failed due to member disagreements.</p>
 </div>
 
-<h3 id="incidents">Incidents</h3>
+<button class="collapsible">Notable Incidents</button>
 <div class="collapsible-content">
-<p><strong>Ahmalid incident:</strong> Brief summary and outcome.</p>
-<p><strong>Mazen security incident:</strong> Kahk’s phone motherboard burned; Facebook group attacked...</p>
+<p><strong>Ahmalid incident:</strong> Ahmalid left after a conflict; blocked from Saeloon.</p>
+<p><strong>Mazen security incident:</strong> Kahk and Mazen Mohamed had disputes, resulting in the Facebook group being banned and Kahk’s phone motherboard burned. Kahk later secured his new accounts and continued Saeloon.</p>
 </div>
 
-<h3 id="symbolism">Symbolism & Flag</h3>
+<button class="collapsible">Gallery</button>
 <div class="collapsible-content">
-<p>The skull flag represented the group internally. Nicknames, inside jokes, and terminology strengthened identity.</p>
+  <div class="gallery">
+    <img src="assets/Maadi.jpg" alt="Maadi">
+    <img src="assets/Alex.jpg" alt="Alexandria Corniche">
+    <img src="assets/Giza.jpg" alt="Giza Pyramids">
+    <img src="assets/1280px-Cairo_Tower_and_Qasr_El_Nil_Bridge.jpg" alt="Cairo Tower">
+    <img src="assets/Faculty_of_arts_in_Alexandria_University.jpg" alt="Alexandria University">
+    <img src="assets/Banha.jpg" alt="Benha">
+    <img src="assets/Little_St_James_Island_(9123420726).jpg" alt="Little St James">
+    <img src="assets/Jeffrey_Epstein_mug_shot.jpg" alt="Epstein">
+  </div>
 </div>
 
-<h3 id="organization">Organization</h3>
+<button class="collapsible">References & Notes</button>
 <div class="collapsible-content">
-<p>No formal governance; leadership was informal and based on activity and influence.</p>
-</div>
-
-<h3 id="gallery">Gallery</h3>
-<div class="collapsible-content">
-<div class="gallery">
-  <img src="assets/Maadi.jpg" alt="Maadi">
-  <img src="assets/Alex.jpg" alt="Alexandria Corniche">
-  <img src="assets/Giza.jpg" alt="Giza Pyramids">
-  <img src="assets/1280px-Cairo_Tower_and_Qasr_El_Nil_Bridge.jpg" alt="Cairo Tower">
-  <img src="assets/Faculty_of_arts_in_Alexandria_University.jpg" alt="Alexandria University">
-  <img src="assets/Banha.jpg" alt="Benha">
-  <img src="assets/Little_St_James_Island_(9123420726).jpg" alt="Little St James">
-  <img src="assets/Jeffrey_Epstein_mug_shot.jpg" alt="Epstein">
-</div>
-</div>
-
-<h3 id="dissolution">Dissolution</h3>
-<div class="collapsible-content">
-<p>On 5 November 2024, Kahk announced closure of Saeloon. Public group closed; private chats and archives continued.</p>
+<p>Content is archived from private chats and participant recollections. This site is an independent archive and not a news organization.</p>
 </div>
 
 <p><a href="index.html">← Back to home</a></p>
-</article>
 
-<footer class="site-footer">
+</article>
+</main>
+
+<footer class="site-footer container">
   <div>© Saeloon archive — no official affiliation</div>
 </footer>
 
-<script>
-document.querySelectorAll('.article-content h3').forEach(header => {
-  header.addEventListener('click', () => {
-    const content = header.nextElementSibling;
-    if(content.style.display === "none") { content.style.display = "block"; }
-    else { content.style.display = "none"; }
-  });
-});
-</script>
 </div>
 </body>
 </html>
