@@ -38,13 +38,13 @@ body {
     margin-bottom: 20px;
 }
 .site-header h1 a { 
-    color: #000; 
-    text-decoration: none; 
+    color:#000; 
+    text-decoration:none; 
 }
 .tagline { 
-    font-size: 12px; 
-    color: #555; 
-    margin: 0; 
+    font-size:12px; 
+    color:#555; 
+    margin:0; 
 }
 
 /* Infobox */
@@ -58,60 +58,67 @@ body {
     background: #f9f9f9;
 }
 .infobox caption { 
-    font-weight: bold; 
-    font-size: 125%; 
-    text-align: center; 
-    margin-bottom: 6px; 
+    font-weight:bold; 
+    font-size:125%; 
+    text-align:center; 
+    margin-bottom:6px; 
 }
 .infobox table { 
-    width: 100%; 
-    border-collapse: collapse; 
+    width:100%; 
+    border-collapse:collapse; 
 }
 .infobox th { 
-    text-align: left; 
-    background: #f2f2f2; 
-    padding: 4px; 
-    font-weight: 500; 
+    text-align:left; 
+    background:#f2f2f2; 
+    padding:4px; 
+    font-weight:500; 
 }
 .infobox td { 
-    padding: 4px; 
-    vertical-align: top; 
+    padding:4px; 
+    vertical-align:top; 
 }
 .infobox img { 
-    width: 100%; 
-    border: 1px solid #ddd; 
+    width:100%; 
+    border:1px solid #ddd; 
 }
 .infobox audio { 
-    width: 100%; 
-    margin-top: 5px; 
+    width:100%; 
+    margin-top:5px; 
 }
 
-/* Collapsible section headings (h2 and h3) */
-.article-content h2, .article-content h3 {
+/* Collapsible headings and content */
+.collapsible-heading {
     cursor: pointer;
     position: relative;
+    padding-right: 22px;
     margin-top: 20px;
-}
-.article-content h2::after, .article-content h3::after {
-    content: ' ▼'; /* down arrow by default */
-    font-size: 0.8em;
-    color: #555;
-    position: absolute;
-    right: 0;
-}
-.article-content h2.collapsed::after, .article-content h3.collapsed::after {
-    content: ' ►'; /* right arrow when collapsed */
+    outline: none;
+    user-select: none;
 }
 
-/* Collapsed content */
-.collapsible-content {
-    display: block; /* expanded by default */
-    padding-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+/* Arrow for collapsible heading */
+.collapsible-heading::after {
+    content: ' ►';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0.9em;
+    color: #555;
+    transition: transform 0.18s ease;
 }
-.collapsed + .collapsible-content {
-    display: none;
+
+/* Open arrow */
+.collapsible-heading.open::after {
+    content: ' ▼';
+    transform: none;
+}
+
+/* Collapsible content */
+.collapsible-content {
+    display: block; /* JS will toggle display */
+    padding-left: 10px;
+    margin-top: 6px;
+    margin-bottom: 12px;
 }
 
 /* Article */
@@ -119,12 +126,12 @@ body {
     overflow: hidden;
 }
 .article-content h2 { 
-    border-bottom: 1px solid #ccc; 
-    padding-bottom: 4px; 
-    margin-top: 30px; 
+    border-bottom:1px solid #ccc; 
+    padding-bottom:4px; 
+    margin-top:30px; 
 }
 .article-content h3 { 
-    margin-top: 20px; 
+    margin-top:20px; 
 }
 
 /* Gallery */
@@ -136,8 +143,8 @@ body {
 }
 .gallery img {
     width: calc(33% - 6px);
-    border: 1px solid #ddd;
-    padding: 2px;
+    border:1px solid #ddd;
+    padding:2px;
 }
 
 /* Footer */
@@ -145,22 +152,27 @@ body {
     border-top: 1px solid #ccc;
     text-align: center;
     padding: 10px;
-    font-size: 12px;
-    color: #555;
+    font-size:12px;
+    color:#555;
 }
 
 /* Links */
 a { 
-    color: #0645ad; 
-    text-decoration: none; 
+    color:#0645ad; 
+    text-decoration:none; 
 }
 a:hover { 
-    text-decoration: underline; 
+    text-decoration:underline; 
 }
 
 /* Responsive */
 @media (max-width:768px) {
     .infobox { 
-        width: 100%; 
-        float: none; 
-        margin:
+        width:100%; 
+        float:none; 
+        margin:0 0 20px 0; 
+    }
+    .gallery img { 
+        width:100%; 
+    }
+}
