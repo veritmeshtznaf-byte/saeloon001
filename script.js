@@ -1,12 +1,21 @@
+
 document.addEventListener('DOMContentLoaded', function() {
   const headings = document.querySelectorAll('.collapsible-heading');
 
   headings.forEach(heading => {
     heading.addEventListener('click', function() {
-      heading.classList.toggle('active'); // toggles the arrow rotation
-      const content = heading.nextElementSibling;
-      if(content && content.classList.contains('collapsible-content')) {
-        // Toggle display in one click
+      // Toggle arrow rotation
+      heading.classList.toggle('active');
+
+      // Toggle the next sibling collapsible content
+      let content = heading.nextElementSibling;
+
+      // Sometimes there are text nodes between heading and content
+      while(content && !content.classList.contains('collapsible-content')) {
+        content = content.nextElementSibling;
+      }
+
+      if(content) {
         if(content.style.display === 'block') {
           content.style.display = 'none';
         } else {
