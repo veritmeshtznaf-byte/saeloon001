@@ -4,11 +4,40 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>السايلون — المقال</title>
-<link rel="stylesheet" href="styles.css">
+<style>
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+.container { max-width: 1000px; margin: 0 auto; padding: 1em; }
+a { text-decoration: none; color: #0645AD; }
+a:hover { text-decoration: underline; }
+.site-header, .site-footer { background: #f2f2f2; padding: 1em; border-bottom: 1px solid #ccc; }
+.site-footer { border-top: 1px solid #ccc; text-align: center; font-size: 0.9em; }
+
+.infobox { width: 300px; float: left; margin: 0 1em 1em 0; border: 1px solid #aaa; background: #fdfdfd; padding: 0.5em; font-size: 90%; }
+.infobox table { width: 100%; border-collapse: collapse; }
+.infobox th { background: #f2f2f2; text-align: left; padding: 0.2em; width: 40%; }
+.infobox td { padding: 0.2em; }
+
+.article-content h3 { cursor: pointer; margin-top: 1.5em; background: #e6e6e6; padding: 0.3em 0.5em; border-right: 4px solid #888; }
+.collapsible-content { display: block; padding-right: 0.5em; }
+
+.gallery { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1em; }
+.gallery img { width: calc(33% - 10px); border: 1px solid #ddd; }
+
+.toc { margin: 0.5em 0; font-size: 0.9em; }
+.toc ul { padding-right: 1em; }
+.toc li { margin: 0.2em 0; }
+</style>
 </head>
 <body>
-<div id="content">
-<header class="site-header container">
+<div class="container">
+
+<header class="site-header">
   <div style="display:flex;justify-content:space-between;align-items:center;">
     <div>
       <h1 style="margin:0;"><a href="index.html">السايلون</a></h1>
@@ -24,87 +53,105 @@
           <li><a href="#dissolution">7 الحل</a></li>
         </ul>
       </div>
-      <p class="tagline" style="margin:4px 0 0;">مجتمع افتراضي بأسلوب دولة صغيرة (2020–2024)</p>
+      <p class="tagline">مجتمع افتراضي بأسلوب دولة صغيرة (2020–2024)</p>
     </div>
-    <div style="text-align:right;">
-      <a href="saeloon.html" style="font-size:14px; text-decoration:none;">English</a>
+    <div style="text-align:left;">
+      <a href="saeloon.html">English</a>
     </div>
   </div>
 </header>
 
-<main class="container">
-  <div class="article-body">
+<aside class="infobox" aria-label="Infobox">
+  <caption>السايلون</caption>
+  <table>
+    <tr><th>النوع</th><td>مجتمع افتراضي / دولة صغيرة وهمية</td></tr>
+    <tr><th>التأسيس</th><td>2020</td></tr>
+    <tr><th>الحل</th><td>5 نوفمبر 2024</td></tr>
+    <tr><th>المؤسس</th><td>محمد خالد (كاهك أليت)</td></tr>
+    <tr><th>القادة المشاركون</th><td>ساجد خالد؛ محمد أيمن</td></tr>
+    <tr><th>العلم</th><td><img src="assets/Saeloon_flag.jpg" alt="علم السايلون"></td></tr>
+    <tr><th>النشيد الوطني</th>
+      <td>
+        النشيد الوطني للسايلون<br>
+        <audio controls preload="none" style="width:100%; margin-top:6px">
+          <source src="assets/Saeloon_anthem.ogg" type="audio/ogg">
+          متصفحك لا يدعم تشغيل الصوت.
+        </audio>
+      </td>
+    </tr>
+  </table>
+</aside>
 
-    <!-- Infobox -->
-    <aside class="infobox" aria-label="Infobox">
-      <caption>السايلون</caption>
-      <table>
-        <tr><th>النوع</th><td>مجتمع افتراضي / دولة صغيرة وهمية</td></tr>
-        <tr><th>التأسيس</th><td>2020</td></tr>
-        <tr><th>الحل</th><td>5 نوفمبر 2024</td></tr>
-        <tr><th>المؤسس</th><td>محمد خالد (كاهك أليت)</td></tr>
-        <tr><th>القادة المشاركون</th><td>ساجد خالد؛ محمد أيمن</td></tr>
-        <tr><th>العلم</th><td><img src="assets/Saeloon_flag.jpg" alt="علم السايلون"></td></tr>
-        <tr><th>النشيد الوطني</th>
-          <td>
-            النشيد الوطني للسايلون<br>
-            <audio controls preload="none" style="width:100%; margin-top:6px">
-              <source src="assets/Saeloon_anthem.ogg" type="audio/ogg">
-              متصفحك لا يدعم تشغيل الصوت.
-            </audio>
-          </td>
-        </tr>
-      </table>
-    </aside>
+<article class="article-content">
 
-    <article class="article-content">
+<h3 id="background">الخلفية</h3>
+<div class="collapsible-content">
+<p>تأسس السايلون في عام 2020 على يد محمد خالد ومجموعة صغيرة من الأصدقاء...</p>
+<p>بدأت المجموعة كمكان للميمات والمحادثات اليومية والثقافة المشتركة...</p>
+</div>
 
-      <h3 id="background">الخلفية</h3>
-      <div class="collapsible-content">
-        <p>تأسس السايلون في عام 2020 على يد محمد خالد ومجموعة صغيرة من الأصدقاء...</p>
-        <p>بدأت المجموعة كمكان للميمات والمحادثات اليومية والثقافة المشتركة...</p>
-      </div>
+<h3 id="affiliations">الانتماءات</h3>
+<div class="collapsible-content">
+<p><strong>SIMP / WHYTBS:</strong> مجموعة سابقة كان كاهك أحد مؤسسيها...</p>
+<p><strong>صالون فوزي الثقافي:</strong> أحمد FwZzy كان قائد هذه المجموعة، وتعاونوا أحياناً مع السايلون...</p>
+</div>
 
-      <h3 id="affiliations">الانتماءات</h3>
-      <div class="collapsible-content">
-        <p><strong>SIMP / WHYTBS:</strong> مجموعة سابقة كان كاهك أحد مؤسسيها...</p>
-        <p><strong>صالون فوزي الثقافي:</strong> أحمد FwZzy كان قائد هذه المجموعة، وتعاونوا أحياناً مع السايلون...</p>
-      </div>
+<h3 id="incidents">الحوادث</h3>
+<div class="collapsible-content">
+<p><strong>حادثة أحماليض:</strong> ملخص ونتائج الحادثة.</p>
+<p><strong>حادثة مازن الأمنية:</strong> حرق لوحة هاتف كاهك الأمامية، الهجوم على مجموعة فيسبوك...</p>
+</div>
 
-      <h3 id="incidents">الحوادث</h3>
-      <div class="collapsible-content">
-        <p><strong>حادثة أحماليض:</strong> ملخص ونتائج الحادثة.</p>
-        <p><strong>حادثة مازن الأمنية:</strong> حرق لوحة هاتف كاهك الأمامية، الهجوم على مجموعة فيسبوك...</p>
-      </div>
+<h3 id="symbolism">الرموز والعلم</h3>
+<div class="collapsible-content">
+<p>صُمم العلم ليُمثل السايلون داخلياً. الألقاب والنكات والمصطلحات ساعدت على توطيد هوية المجموعة.</p>
+</div>
 
-      <h3 id="symbolism">الرموز والعلم</h3>
-      <div class="collapsible-content">
-        <p>صُمم العلم ليُمثل السايلون داخلياً. الألقاب والنكات والمصطلحات ساعدت على توطيد هوية المجموعة.</p>
-      </div>
+<h3 id="organization">التنظيم</h3>
+<div class="collapsible-content">
+<p>لا يوجد حكم رسمي أو إقليم؛ القيادة كانت غير رسمية حسب النشاط والتأثير الاجتماعي.</p>
+</div>
 
-      <h3 id="organization">التنظيم</h3>
-      <div class="collapsible-content">
-        <p>لا يوجد حكم رسمي أو إقليم؛ القيادة كانت غير رسمية حسب النشاط والتأثير الاجتماعي.</p>
-      </div>
+<h3 id="gallery">المعرض</h3>
+<div class="collapsible-content">
+<div class="gallery">
+  <img src="assets/Maadi.jpg" alt="المعاد">
+  <img src="assets/Alex.jpg" alt="كورنيش الإسكندرية">
+  <img src="assets/Giza.jpg" alt="أهرامات الجيزة">
+  <img src="assets/1280px-Cairo_Tower_and_Qasr_El_Nil_Bridge.jpg" alt="برج القاهرة">
+  <img src="assets/Faculty_of_arts_in_Alexandria_University.jpg" alt="جامعة الإسكندرية">
+  <img src="assets/Banha.jpg" alt="بنها">
+  <img src="assets/Little_St_James_Island_(9123420726).jpg" alt="جزيرة ليتل سانت جيمس">
+  <img src="assets/Jeffrey_Epstein_mug_shot.jpg" alt="إبشتاين">
+</div>
+</div>
 
-      <h3 id="gallery">المعرض</h3>
-      <div class="collapsible-content">
-        <div class="gallery">
-          <img src="assets/Maadi.jpg" alt="المعاد">
-          <img src="assets/Alex.jpg" alt="كورنيش الإسكندرية">
-          <img src="assets/Giza.jpg" alt="أهرامات الجيزة">
-          <img src="assets/1280px-Cairo_Tower_and_Qasr_El_Nil_Bridge.jpg" alt="برج القاهرة">
-          <img src="assets/Faculty_of_arts_in_Alexandria_University.jpg" alt="جامعة الإسكندرية">
-          <img src="assets/Banha.jpg" alt="بنها">
-          <img src="assets/Little_St_James_Island_(9123420726).jpg" alt="جزيرة ليتل سانت جيمس">
-          <img src="assets/Jeffrey_Epstein_mug_shot.jpg" alt="إبشتاين">
-        </div>
-      </div>
+<h3 id="dissolution">الحل</h3>
+<div class="collapsible-content">
+<p>في 5 نوفمبر 2024، أعلن كاهك إغلاق السايلون...</p>
+<p>تم إغلاق المجموعة العامة، ولكن استمرت المحادثات والنسخ الأرشيفية الخاصة ببعض الأعضاء.</p>
+</div>
 
-      <h3 id="dissolution">الحل</h3>
-      <div class="collapsible-content">
-        <p>في 5 نوفمبر 2024، أعلن كاهك إغلاق السايلون...</p>
-        <p>تم إغلاق المجموعة العامة، ولكن استمرت المحادثات والنسخ الأرشيفية الخاصة ببعض الأعضاء.</p>
+<p><a href="index.html">← العودة إلى الصفحة الرئيسية</a></p>
+</article>
+
+<footer class="site-footer">
+  <div>© أرشيف السايلون — بدون أي تبعية رسمية</div>
+</footer>
+
+<script>
+document.querySelectorAll('.article-content h3').forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    if(content.style.display === "none") { content.style.display = "block"; }
+    else { content.style.display = "none"; }
+  });
+});
+</script>
+
+</div>
+</body>
+</html>        <p>تم إغلاق المجموعة العامة، ولكن استمرت المحادثات والنسخ الأرشيفية الخاصة ببعض الأعضاء.</p>
       </div>
 
       <p><a href="index.html">← العودة إلى الصفحة الرئيسية</a></p>
