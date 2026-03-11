@@ -1,178 +1,190 @@
-/* ===============================
-   Saeloon Article Styles
-   Max Payne Font: Univers Light Condensed
-   =============================== */
+/* styles.css — Saeloon site upgraded
+   - bolder readable text
+   - infobox like Wikipedia
+   - smooth collapsible animations
+   - nice language switcher
+*/
 
-/* Load the font */
+/* -----------------------------
+   Font (use your Univers TTF)
+   ----------------------------- */
 @font-face {
-    font-family: "UniversLightCondensed";
-    src: url("assets/fonts/UniversLightCondensed.ttf") format("truetype");
-    font-weight: 300;
-    font-style: normal;
+  font-family: "UniversLightCondensed";
+  src: url("assets/fonts/UniversLightCondensed.ttf") format("truetype");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Global font */
-body {
-    font-family: "UniversLightCondensed", Arial, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #000;
-    margin: 0;
-    padding: 0;
-    background: #fff;
-    text-shadow: 0.2px 0 #000;
+/* Fallback stack & improved readability */
+:root{
+  --container: 1000px;
+  --muted: #666;
+  --border: #e1e1e1;
+  --accent: #0645ad;
+  --bg: #ffffff;
+  --text: #111;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: "UniversLightCondensed", "Helvetica Neue", Arial, sans-serif;
+  font-size:16px;              /* slightly bigger */
+  line-height:1.6;
+  color:var(--text);
+  background:var(--bg);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* make the font weight a bit heavier for readability (works even if the TTF is light) */
+body, p, li, dd {
+  font-weight: 500;
+  letter-spacing: 0.1px;
 }
 
 /* Container */
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Header */
-.site-header {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+/* Header / top bar */
+.header-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:12px;
 }
-.site-header h1 a { 
-    color:#000; 
-    text-decoration:none; 
-}
-.tagline { 
-    font-size:12px; 
-    color:#555; 
-    margin:0; 
-}
+.site-title { font-size:22px; margin:0; }
+.tagline { color:var(--muted); font-size:13px }
 
-/* Infobox */
+/* Language switcher (polished pill) */
+.lang-switcher {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#f4f6fb;
+  border:1px solid #e3e6ef;
+  padding:6px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:14px;
+  color:var(--text);
+  transition:all .18s ease;
+  user-select:none;
+}
+.lang-switcher:hover { transform:translateY(-1px); box-shadow:0 6px 18px rgba(10,20,50,0.04); }
+.lang-switcher .flag {
+  width:20px; height:14px; background-size:cover; border-radius:2px; flex:0 0 auto;
+}
+/* example CSS classes for flags (you can replace with actual image backgrounds) */
+.lang-en { background-image:url('assets/icons/en-flag.png'); }
+.lang-ar { background-image:url('assets/icons/ar-flag.png'); }
+
+/* Infobox (Wikipedia-like) */
 .infobox {
-    width: 300px;
-    border: 1px solid #aaa;
-    padding: 5px;
-    margin: 0 0 20px 20px;
-    float: right;
-    font-size: 90%;
-    background: #f9f9f9;
+  width:320px;
+  float:right;
+  margin:0 0 18px 18px;
+  background:#fafafa;
+  border:1px solid var(--border);
+  padding:10px;
+  font-size:0.95em;
+  line-height:1.35;
+  border-radius:6px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
 }
-.infobox caption { 
-    font-weight:bold; 
-    font-size:125%; 
-    text-align:center; 
-    margin-bottom:6px; 
-}
-.infobox table { 
-    width:100%; 
-    border-collapse:collapse; 
-}
-.infobox th { 
-    text-align:left; 
-    background:#f2f2f2; 
-    padding:4px; 
-    font-weight:500; 
-}
-.infobox td { 
-    padding:4px; 
-    vertical-align:top; 
-}
-.infobox img { 
-    width:100%; 
-    border:1px solid #ddd; 
-}
-.infobox audio { 
-    width:100%; 
-    margin-top:5px; 
-}
+.infobox caption { font-weight:700; display:block; margin-bottom:8px; text-align:center; font-size:1.03em; }
+.infobox table { width:100%; border-collapse:collapse; }
+.infobox th { text-align:left; background:#f2f4f7; padding:6px; font-weight:700; width:40%; vertical-align:top; }
+.infobox td { padding:6px; vertical-align:top; }
+.infobox img { width:100%; height:auto; border:1px solid #e8e8e8; display:block; }
 
-/* Collapsible headings and content */
-.collapsible-heading {
-    cursor: pointer;
-    position: relative;
-    padding-right: 22px;
-    margin-top: 20px;
-    outline: none;
-    user-select: none;
-}
+/* Clearfix after the infobox to avoid overlap in mobile */
+.clearfix{ clear:both; }
 
-/* Arrow for collapsible heading */
-.collapsible-heading::after {
-    content: ' ►';
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 0.9em;
-    color: #555;
-    transition: transform 0.18s ease;
+/* TOC styling (left column on wide screens) */
+#toc {
+  border:1px solid var(--border);
+  background:#fff;
+  padding:12px;
+  width:280px;
+  float:left;
+  margin-right:18px;
+  font-size:0.95em;
+  border-radius:6px;
+  box-shadow:0 1px 0 rgba(0,0,0,0.02);
 }
-
-/* Open arrow */
-.collapsible-heading.open::after {
-    content: ' ▼';
-    transform: none;
-}
-
-/* Collapsible content */
-.collapsible-content {
-    display: block; /* JS will toggle display */
-    padding-left: 10px;
-    margin-top: 6px;
-    margin-bottom: 12px;
-}
+#toc h2 { margin:0 0 8px; font-size:16px; }
+#toc ol { margin:0; padding-left:18px; }
 
 /* Article */
 .article-content {
-    overflow: hidden;
+  overflow:visible;
+  /* keep clearer baseline reading width */
+  max-width: calc(100% - 340px);
 }
-.article-content h2 { 
-    border-bottom:1px solid #ccc; 
-    padding-bottom:4px; 
-    margin-top:30px; 
+@media (max-width:980px) { .article-content { max-width:100%; } #toc{ float:none; width:auto; } }
+
+/* Headings & collapsible headings */
+.article-content h1 { font-size:28px; margin:0 0 12px; }
+.collapsible-heading {
+  cursor:pointer;
+  position:relative;
+  padding-right:30px;
+  margin-top:24px;
+  font-weight:700;
+  user-select:none;
 }
-.article-content h3 { 
-    margin-top:20px; 
+.collapsible-heading::after{
+  content:'\25B6'; /* triangle right */
+  position:absolute;
+  right:0;
+  top:0;
+  font-size:14px;
+  color:var(--muted);
+  transition: transform .20s ease, color .15s ease;
 }
+.collapsible-heading.open::after{
+  transform:rotate(90deg);
+  color:var(--accent);
+}
+
+/* Collapsible content: smooth height animation */
+.collapsible-content {
+  overflow:hidden;
+  max-height:0;
+  transition: max-height .34s cubic-bezier(.2,.9,.2,1), opacity .22s ease;
+  opacity:0;
+  padding-left:6px;
+  margin-top:8px;
+  margin-bottom:12px;
+}
+.collapsible-content.open {
+  opacity:1;
+}
+
+/* paragraphs and readability tweaks */
+p { margin:0 0 12px; }
+blockquote { margin:10px 0; padding-left:12px; border-left:3px solid #eee; color:#333; }
 
 /* Gallery */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-.gallery img {
-    width: calc(33% - 6px);
-    border:1px solid #ddd;
-    padding:2px;
-}
+.gallery { display:flex; flex-wrap:wrap; gap:10px; margin:12px 0; }
+.gallery img { width:calc(33% - 6.6px); border:1px solid #eee; padding:4px; background:#fff; }
+@media (max-width:680px){ .gallery img{ width:100%; } }
 
 /* Footer */
-.site-footer {
-    border-top: 1px solid #ccc;
-    text-align: center;
-    padding: 10px;
-    font-size:12px;
-    color:#555;
-}
+.site-footer { clear:both; margin-top:30px; padding-top:12px; border-top:1px solid var(--border); color:var(--muted); text-align:center; }
 
 /* Links */
-a { 
-    color:#0645ad; 
-    text-decoration:none; 
-}
-a:hover { 
-    text-decoration:underline; 
-}
+a{ color:var(--accent); text-decoration:none; }
+a:hover{text-decoration:underline;}
 
-/* Responsive */
-@media (max-width:768px) {
-    .infobox { 
-        width:100%; 
-        float:none; 
-        margin:0 0 20px 0; 
-    }
-    .gallery img { 
-        width:100%; 
-    }
-}
+/* small helpers */
+.hidden { display:none !important; }
