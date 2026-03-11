@@ -150,6 +150,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// ---------- optional safety: reposition language dropdown if it would overflow ----------
+(function () {
+  // try common IDs used in our HTML
+  const btn = document.getElementById('lang-button') || document.getElementById('lang-switcher');
+  const list = document.getElementById('lang-list') || document.getElementById('lang-dropdown');
+  if (!btn || !list) return; // nothing to do if elements missing
+
+  function clampDropdown() {
+    // reset inline style anchors
+    list.style.left = '';
+    list.style.right = '';
+    list.style.maxWidth = '';
+
+    const listRect = list.getBoundingClientRect();
+    const pad = 8; // margin from viewport edge in px
+
+    // if left side is off-screen
+    if (listRect.left < pad) {
+      list.style.left = pad + 'px';
+      list.style.right = 'auto';
+    }
+
+    // if right side is off-screen
+    if (listRect.right > (window.innerWidth - pad)) {
+      list.style.right = pad + 'px';
+      list.style.left = 'auto';
+      const maxW = window.innerWidth - (pad * 2);
+      list.style.maxWidth = maxW + 'px';
+    }
+  }
+
+  // observe 'class' changes (to detect open/close via .hidden)
+  const obs = new MutationObserver(() => {
+    if (!list.classList.contains('hidden')) {
+      // wait a frame so CSS/layout is updated, then clamp
+      requestAnimationFrame(clampDropdown);
+    }
+  });
+  obs.observe(list, { attributes: true, attributeFilter: ['class'] });
+
+  // also clamp on resize if dropdown is open
+  window.addEventListener('resize', () => {
+    if (!list.classList.contains('hidden')) clampDropdown();
+  });
+})();
+
 // language icon button behavior (add this inside DOMContentLoaded or at end of file)
 (function() {
   const btn = document.getElementById('lang-button');
