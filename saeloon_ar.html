@@ -10,34 +10,38 @@
 </head>
 <body>
 
-<header class="header-row container" role="banner" style="flex-direction:row-reverse;">
-  <div>
+<header class="header-row container" role="banner" style="direction:rtl;">
+  <div class="header-left" style="text-align:right;">
     <h1 class="site-title"><a href="index.html">سايلون</a></h1>
     <div class="tagline">هوية افتراضية شبيهة بالميكرونايشن على الإنترنت (2020–2024)</div>
   </div>
 
-  <div>
-    <button class="lang-switcher" aria-label="تغيير اللغة">
-      <span class="flag lang-ar" style="background-image:url('assets/icons/ar-flag.png')"></span>
-      <span class="flag lang-en" style="background-image:url('assets/icons/en-flag.png')"></span>
-      <span style="font-weight:600;">اللغة</span>
-    </button>
+  <!-- Language switcher: real button with dropdown (matches script.js) -->
+  <div class="header-right">
+    <div class="lang-switcher" id="lang-switcher" aria-haspopup="true" aria-expanded="false" role="button" tabindex="0">
+      <span class="flag lang-ar" title="العربية"></span>
+      <span class="label">AR</span>
+      <svg class="chev" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M8.5 9.5L12 13l3.5-3.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <ul class="lang-dropdown hidden" id="lang-dropdown" role="menu" aria-label="Language selector" style="right:0; left:auto;">
+      <li role="menuitem"><a href="saeloon.html" data-lang="en"><span class="flag lang-en"></span> English</a></li>
+      <li role="menuitem"><a href="saeloon_ar.html" data-lang="ar"><span class="flag lang-ar"></span> العربية</a></li>
+    </ul>
   </div>
 </header>
 
 <main class="container">
 
-  <!-- Lead (فوق الإنفوبوكس) -->
-  <p><strong>سايلون</strong> كانت هوية شبيهة بالـ«ميكرونايشن» ومجتمعًا إلكترونيًا انطلق من مجموعة خاصة على فيسبوك ماسنجر تأسست عام 2020. لم تمثل سايلون دولة حقيقية أو كيانًا سياسيًا؛ بل كانت إطارًا رمزيًا يعبر من خلاله الأعضاء عن الانتماء الجماعي، الثقافة المشتركة، والهوية الجماعية.</p>
+  <!-- Lead (only once, above the infobox) -->
+  <p class="lead" style="text-align:right;">
+    <strong>سايلون</strong> كانت هوية شبيهة بالـ«ميكرونايشن» ومجتمعًا إلكترونيًا انطلق من مجموعة خاصة على فيسبوك ماسنجر تأسست عام 2020. لم تمثل سايلون دولة حقيقية أو كيانًا سياسيًا؛ بل كانت إطارًا رمزيًا يعبر من خلاله الأعضاء عن الانتماء الجماعي، الثقافة المشتركة، والهوية الجماعية.
+  </p>
 
-  <!-- Infobox -->
-  <aside class="infobox" aria-label="Infobox">
-    <div style="font-style:italic; margin-bottom:8px;">
-      سايلون كانت هوية مجتمعية افتراضية انبثقت من مجموعة خاصة على فيسبوك ماسنجر (2020–2024). لم تكن كيانًا سياسياً حقيقياً، بل هو علامة هوية مشتركة بين المشاركين.
-    </div>
-
-    <caption>سايلون</caption>
+  <!-- Infobox (caption inside table, no duplicate lead) -->
+  <aside class="infobox" aria-label="Infobox" style="direction:rtl;">
     <table>
+      <caption>سايلون</caption>
       <tr><th>النوع</th><td>هوية افتراضية / مجتمع عبر الإنترنت</td></tr>
       <tr><th>تأسست</th><td>2020</td></tr>
       <tr><th>انتهت</th><td>5 نوفمبر 2024</td></tr>
@@ -45,7 +49,7 @@
       <tr><th>القادة المشاركون</th><td>ساجد خالد؛ محمد أيمن</td></tr>
       <tr><th>المنصة</th><td>Facebook Messenger</td></tr>
       <tr><th>العلم</th>
-        <td><img src="assets/Saeloon_flag.jpg" alt="علم سايلون" style="width:100%;"></td>
+        <td><img src="assets/Saeloon_flag.jpg" alt="علم سايلون" style="width:100%; border:1px solid #ddd;"></td>
       </tr>
       <tr><th>النشيد</th>
         <td>
@@ -61,12 +65,13 @@
 
   <div class="clearfix"></div>
 
-  <!-- TOC (يبنى أوتوماتيكياً بواسطة script.js) -->
-  <div id="toc"></div>
+  <!-- TOC placeholder (script.js will build TOC) -->
+  <div id="toc" style="direction:rtl;"></div>
 
-  <article class="article-content">
+  <article class="article-content" style="direction:rtl; text-align:right;">
 
-    <!-- الخلفية -->
+    <!-- Full Arabic content (verbatim as previously supplied) -->
+
     <h2 class="collapsible-heading">الخلفية</h2>
     <div class="collapsible-content">
       <p>تأسست سايلون في عام 2020 بواسطة محمد خالد مع دائرة صغيرة من الأصدقاء، بما في ذلك زياد الـ 7مير. بدأت المجموعة كمكان عفوي للميمات والمحادثات اليومية والمشاركة حول مواضيع مثل الصحة، الحياة الشخصية، والإعلام. في مرحلتها الأولى لم يكن للدردشة اسم ثابت وكانت الألقاب والعناوين تتغير لأغراضٍ فكاهية.</p>
@@ -74,25 +79,21 @@
       <p>كانت المجموعة خاصة على فيسبوك ماسنجر. وعلى الرغم من عدم كونها دولة حقيقية، تبنّت سايلون رموزًا وألقابًا وصورةً موحدة لتكوين هوية مشتركة بين الأعضاء. هذه الصفحة تؤرشف تاريخ المجموعة ووسائطها ومقتطفات من المحادثات.</p>
     </div>
 
-    <!-- الاسم والهوية -->
     <h2 class="collapsible-heading">الاسم والهوية</h2>
     <div class="collapsible-content">
       <p>في أوائل 2021 اقترح محمد خالد تأسيس هوية ثابتة للمجموعة لتعزيز شعور الأعضاء بالانتماء. الاسم المعتمد "سايلون" خدم كتسمية رمزية للجماعة ووفّر استمرارية بين الموضوعات المتكررة والنكات الداخلية.</p>
     </div>
 
-    <!-- الرمزية والعلم -->
     <h2 class="collapsible-heading">الرمزية والعلم</h2>
     <div class="collapsible-content">
       <p>كجزء من عملية بناء الهوية، صمّم محمد خالد علمًا أبيض-أسود عليه جمجمة، مستوحى من أيقونات القراصنة (Jolly Roger). كان العلم رمزًا داخليًا وليست له دلالات سياسية. عند عدم توفّر الصورة الأصلية، استخدم الأعضاء صورًا عامة شبيهة برموز القراصنة كبديل بصري.</p>
     </div>
 
-    <!-- التنظيم والعضوية -->
     <h2 class="collapsible-heading">التنظيم والعضوية</h2>
     <div class="collapsible-content">
-      <p>لم يكن لدى سايلون حكم رسمي أو دستور مكتوب أو إقليم محدد. القيادة والمكانة كانت غير رسمية وتعتمد على المشاركة والمساهمة والنفوذ الاجتماعي داخل الدردشة. تغيّرت العضوية على مدار الزمن، فانضم بعض الأعضاء وغادر البعض الآخر، ولاحقًا اعتُبرت مجموعة أصغر من المشاركين القدامى مؤسسي الهوية بشكل غير رسمي.</p>
+      <p>لم يكن لدى سايلون حكم رسمي أو دستور مكتوب أو إقليم محدد. القيادة والمكانة كانت غير رسمية وتعتمد على المشاركة والمساهمة والنفوذ الاجتماعي داخل الدردشة. تغيّرت العضوية على مدار الزمن، فانضم بعض الأعضاء وغادر البعض الآخر، ولاحقًا اعتُبرت مجموعة صغيرة من الأعضاء القدامى مؤسسي الهوية بشكل غير رسمي.</p>
     </div>
 
-    <!-- الانتماءات -->
     <h2 class="collapsible-heading">الانتماءات</h2>
     <div class="collapsible-content">
       <p>كان لسايلون روابط مع مجموعتين منفصلتين عملتا جنبًا إلى جنب أو بالقرب من دردشة سايلون؛ واستندت روايات هذه العلاقات إلى ذكريات المشاركين:</p>
@@ -102,7 +103,6 @@
       <p><strong>صالون فوزي الثقافي (Salon Fawzi Cultural)</strong> — دائرة ثقافية غير رسمية ذُكرت كمكان للنقاش والتبادل الإبداعي؛ وذكر المشاركون أن <strong>أحمد FwZzy</strong> قاد هذه الدائرة وتواصل مع كحك بصورة متكررة. سُجلت محاولة مقترحة لدمج بعض الأنشطة بين المجموعتين لكنها أُلغيت بعد خلافات داخلية وتصويت رفض الانتقال. هذه التفاصيل مبنية على تقارير المشاركين ولم تُتحقق مستقلاً.</p>
     </div>
 
-    <!-- الأعضاء البارزون -->
     <h2 class="collapsible-heading">الأعضاء البارزون</h2>
     <div class="collapsible-content">
       <ul>
@@ -114,16 +114,15 @@
       </ul>
     </div>
 
-    <!-- الحوادث -->
     <h2 class="collapsible-heading">الحوادث</h2>
     <div class="collapsible-content">
 
       <h3 class="collapsible-heading">أحمليض</h3>
       <div class="collapsible-content">
-        <img src="assets/Jeffrey_Epstein_mug_shot.jpg" alt="Epstein" style="float:left; width:140px; margin-right:10px; margin-bottom:6px;">
+        <img src="assets/Jeffrey_Epstein_mug_shot.jpg" alt="Epstein" style="float:left; width:140px; margin:8px;">
         <p>أحمليض كان أصغر مشارك في سايلون. غادر المجموعة بعد خلاف وقع على منصات خارجية. وفق روايات المشاركين (مقتطفة حرفياً):</p>
         <blockquote>أحمليض قال لكحك: "منذ متى وأنت صديقي؟"</blockquote>
-        <p>اعتذر كحك ووصف الأمر بأنه خطأ منه؛ فرد أحمليض: "اعتذارك لا ينفعني". قال كحك "حسنًا" ثم قام بحظر أحمليض من جميع تطبيقات ومجموعات سايلون. سَجل بعض المشاركين أن أحمليض كان يتابع شخصيات مصرية ملحدة على مواقع التواصل (مثل شريف جابر وكوساي بيتار)، واعتبر بعضهم أن ذلك كان تأثيرًا من مجتمعات خارجية. هذه التفاصيل واردة كشهادات مشاركين ولم يتم التحقق منها مستقلاً.</p>
+        <p>اعتذر كحك ووصف الأمر بأنه خطأ منه؛ فرد أحمليض: "اعتذارك لا ينفعني". قال كحك "حسنًا" ثم قام بحظر أحمليض من جميع تطبيقات ومجموعات سايلون. سَجل بعض المشاركين أن أحمليض كان يتابع شخصيات مصرية ملحدة على وسائل التواصل الاجتماعي (مثل شريف جابر وكوساي بيتار)، واعتبر بعضهم أن ذلك كان تأثيرًا من مجتمعات خارجية. هذه التفاصيل واردة كشهادات مشاركين ولم يتم التحقق منها مستقلاً.</p>
         <p>وردت أيضًا إشارة في روايات المشاركين أن أحمليض تواجد في "جزيرة إبستين" في عام 2018.</p>
       </div>
 
@@ -146,19 +145,16 @@
 
     </div>
 
-    <!-- التأثيرات والتغير الداخلي -->
     <h2 class="collapsible-heading">التأثيرات والتغير الداخلي</h2>
     <div class="collapsible-content">
       <p>استشهد الأعضاء بمصادر متعددة من ثقافة الإنترنت وجماليات الوسائط البديلة؛ ذُكر عمل الموسيقي/الفنان المرئي Jack Stauber كمصدر إلهام لدى المشاركين. كما ساهمت تغيّرات شخصية لبعض الأعضاء، بما فيها إعادة توجه ساجد خالد دينيًا وقراره الابتعاد عن سلوكيات معينة، في تغيير ديناميكية المجموعة. وفق المشاركين، أخبر ساجد كحك أنه "غيّر عقليته" وينوي ترك سلوكياتٍ سابقة، فوافق كحك وبدأ المؤسسون بتقليص النشاط العام ونقل بعض التواصل إلى دردشات خاصة مثل Sanitarium.</p>
     </div>
 
-    <!-- الانحلال -->
     <h2 class="collapsible-heading">الانحلال</h2>
     <div class="collapsible-content">
       <p>بعد الإغلاق العام، استمر بعض الأعضاء في تواصل محدود عبر دردشات خاصة ومحادثات فردية؛ ومن بين هذه المجموعات الخاصة كانت مجموعة "Sanitarium" التي شملت محمد أيمن وساجد خالد.</p>
     </div>
 
-    <!-- معرض الصور -->
     <h2 class="collapsible-heading">معرض الصور</h2>
     <div class="collapsible-content gallery" style="overflow:auto;">
       <img src="assets/Maadi.jpg" alt="Maadi" style="width:30%; margin:5px;">
@@ -170,7 +166,6 @@
       <img src="assets/Little_St_James_Island_(9123420726).jpg" alt="جزيرة ليتل سانت جيمس" style="width:30%; margin:5px;">
     </div>
 
-    <!-- المراجع والملاحظات -->
     <h2 class="collapsible-heading">المراجع والملاحظات</h2>
     <div class="collapsible-content">
       <p>المحتوى مؤرشف من محادثات خاصة وشهادات المشاركين. هذا الموقع مستقل وليس جهة إخبارية. تُعرض روايات المشاركين هنا كشهادات ومقتطفات أرشيفية ولا تُعتبر مُحققة بشكل مستقل.</p>
@@ -183,13 +178,13 @@
       </ol>
     </div>
 
-    <p><a href="index.html">← العودة للرئيسية</a></p>
+    <p style="text-align:right;"><a href="index.html">← العودة للرئيسية</a></p>
 
   </article>
 
 </main>
 
-<footer class="site-footer container">
+<footer class="site-footer container" style="direction:rtl; text-align:center;">
   <div>© أرشيف سايلون — لا توجد أي صلة رسمية</div>
 </footer>
 
