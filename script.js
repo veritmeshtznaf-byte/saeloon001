@@ -1,17 +1,16 @@
-// script.js — robust single-click collapsibles with smooth full expand/collapse
-document.addEventListener('DOMContentLoaded', () => {
+// script.js — robust single-click collapsibles, TOC builder, and language switcher
+document.addEventListener('DOMContentLoaded', function() {
 
-  // helper: find the next element sibling that is the collapsible content
-  function nextCollapsible(node) {
-    let el = node.nextElementSibling;
-    while (el && !el.classList.contains('collapsible-content')) el = el.nextElementSibling;
-    return el || null;
+  // ---------- Collapsibles ----------
+  function nextCollapsible(el) {
+    let n = el.nextElementSibling;
+    while (n && !n.classList.contains('collapsible-content')) n = n.nextElementSibling;
+    return n || null;
   }
 
-  // ensure a clean transitionend handler that only runs once per toggle
-  function onTransitionEndOnce(el, cb) {
+  function onTransitionEndOnce(el, propName, cb) {
     function handler(e) {
-      if (e.propertyName === 'max-height') {
+      if (!propName || e.propertyName === propName) {
         el.removeEventListener('transitionend', handler);
         cb && cb();
       }
@@ -19,101 +18,134 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('transitionend', handler);
   }
 
-  // initialize headings
   const headings = Array.from(document.querySelectorAll('.collapsible-heading'));
   headings.forEach(h => {
-    h.setAttribute('role', 'button');
+    h.setAttribute('role','button');
     h.tabIndex = 0;
-    h.setAttribute('aria-expanded', 'false');
+    h.setAttribute('aria-expanded','false');
 
-    const content = nextCollapsible(h);
-    if (content) {
-      // ensure collapsed initial state unless it has .open class
-      content.style.overflow = 'hidden';
-      if (content.classList.contains('open')) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.style.opacity = '1';
+    const c = nextCollapsible(h);
+    if (c) {
+      c.style.display = 'block';
+      c.style.overflow = 'hidden';
+      if (c.classList.contains('open')) {
+        c.style.maxHeight = c.scrollHeight + 'px';
+        c.style.opacity = '1';
         h.classList.add('open');
-        h.setAttribute('aria-expanded', 'true');
+        h.setAttribute('aria-expanded','true');
       } else {
-        content.style.maxHeight = '0px';
-        content.style.opacity = '0';
-        // keep display:block so scrollHeight measurements work consistently
-        content.style.display = 'block';
+        c.style.maxHeight = '0px';
+        c.style.opacity = '0';
       }
     }
 
-    // click toggles
-    h.addEventListener('click', (e) => {
+    h.addEventListener('click', function(e) {
       e.stopPropagation();
-      const c = nextCollapsible(h);
-      if (!c) return;
+      const content = nextCollapsible(h);
+      if (!content) return;
+      const willOpen = !content.classList.contains('open');
 
-      const isOpening = !c.classList.contains('open');
+      if (willOpen) {
+        // prepare open
+        content.style.display = 'block';
+        // ensure start from 0
+        content.style.maxHeight = '0px';
+        // force reflow
+        content.getBoundingClientRect();
+        content.classList.add('open');
+        h.classList.add('open');
+        h.setAttribute('aria-expanded','true');
+        content.style.opacity = '1';
+        content.style.transition = 'max-height 360ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease';
+        content.style.maxHeight = content.scrollHeight + 'px';
 
-      if (isOpening) {
-        // Make visible for measurement
-        c.style.display = 'block';
-        // Remove any leftover 'none' so scrollHeight is accurate
-        c.style.opacity = '0';
-
-        // measure target
-        const target = c.scrollHeight;
-
-        // start the animation from current 0 -> target px
-        // ensure we are starting from 0
-        c.style.maxHeight = '0px';
-
-        // force reflow then animate
-        requestAnimationFrame(() => {
-          c.classList.add('open');
-          h.classList.add('open');
-          h.setAttribute('aria-expanded', 'true');
-          c.style.opacity = '1';
-          c.style.transition = 'max-height 340ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease';
-          c.style.maxHeight = target + 'px';
-        });
-
-        // after transition, clear maxHeight so content can resize naturally
-        onTransitionEndOnce(c, () => {
-          if (c.classList.contains('open')) {
-            c.style.maxHeight = 'none'; // allow natural height growth
-          }
+        onTransitionEndOnce(content, 'max-height', () => {
+          // allow natural height after open
+          if (content.classList.contains('open')) content.style.maxHeight = 'none';
         });
 
       } else {
-        // closing: snap to current height then animate to 0
-        // if maxHeight is 'none' make it current scrollHeight first
-        if (c.style.maxHeight === 'none' || !c.style.maxHeight) {
-          c.style.maxHeight = c.scrollHeight + 'px';
+        // closing
+        // set current height so transition can run
+        if (content.style.maxHeight === 'none' || !content.style.maxHeight) {
+          content.style.maxHeight = content.scrollHeight + 'px';
         }
-
-        // force reflow then animate to 0
-        requestAnimationFrame(() => {
-          c.classList.remove('open');
-          h.classList.remove('open');
-          h.setAttribute('aria-expanded', 'false');
-          c.style.transition = 'max-height 340ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease';
-          c.style.maxHeight = '0px';
-          c.style.opacity = '0';
-        });
-
-        // after it finishes collapsing, keep display:block but maxHeight 0 (so it can reopen smoothly)
-        onTransitionEndOnce(c, () => {
-          // keep display:block (so measurements work), maxHeight already 0, opacity 0
-          // nothing else needed
+        // force reflow
+        content.getBoundingClientRect();
+        content.classList.remove('open');
+        h.classList.remove('open');
+        h.setAttribute('aria-expanded','false');
+        content.style.transition = 'max-height 360ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease';
+        content.style.maxHeight = '0px';
+        content.style.opacity = '0';
+        onTransitionEndOnce(content, 'max-height', () => {
+          // keep display:block to allow measurements next time
         });
       }
     });
 
-    // keyboard controls
-    h.addEventListener('keydown', (e) => {
+    h.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        h.click();
+        e.preventDefault(); h.click();
       }
     });
   });
 
-  // (Optional) If you build a TOC in script, keep it — not touched here.
+  // ---------- TOC builder ----------
+  const tocEl = document.getElementById('toc');
+  if (tocEl) {
+    const headers = Array.from(document.querySelectorAll('.article-content h2'));
+    if (headers.length) {
+      const title = document.createElement('h2'); title.textContent = 'Contents';
+      tocEl.appendChild(title);
+      const ol = document.createElement('ol');
+      headers.forEach((h, i) => {
+        if (!h.id) h.id = 'section-' + i;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        a.addEventListener('click', function(ev) {
+          ev.preventDefault();
+          document.querySelector('#' + h.id).scrollIntoView({behavior:'smooth', block:'start'});
+        });
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      tocEl.appendChild(ol);
+    }
+  }
+
+  // ---------- language switcher ----------
+  const switcher = document.getElementById('lang-switcher');
+  const dropdown = document.getElementById('lang-dropdown');
+  if (switcher && dropdown) {
+    function openDropdown() {
+      dropdown.classList.remove('hidden');
+      switcher.setAttribute('aria-expanded','true');
+    }
+    function closeDropdown() {
+      dropdown.classList.add('hidden');
+      switcher.setAttribute('aria-expanded','false');
+    }
+    // click toggles
+    switcher.addEventListener('click', function(e) {
+      const open = !dropdown.classList.contains('hidden');
+      if (open) closeDropdown(); else openDropdown();
+    });
+    // close on outside click
+    document.addEventListener('click', function(e) {
+      if (!switcher.contains(e.target) && !dropdown.contains(e.target)) closeDropdown();
+    });
+    // keyboard
+    switcher.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeDropdown();
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const open = !dropdown.classList.contains('hidden');
+        if (open) closeDropdown(); else openDropdown();
+      }
+    });
+  }
+
 });
