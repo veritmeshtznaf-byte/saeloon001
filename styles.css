@@ -133,3 +133,21 @@ a:hover { text-decoration:underline; }
 }
 .lang-dropdown a:hover { background:#f3f6ff; }
 .lang-dropdown .flag { width:18px; height:12px; background-size:cover; border-radius:2px; display:inline-block; }
+
+/* Collapsible smooth animation */
+.collapsible-content {
+  overflow: hidden;
+  transition: height 0.35s ease, opacity 0.35s ease;
+}
+
+/* Optional: fade-in effect */
+.collapsible-content.open {
+  opacity: 1;
+}
+
+/* Language dropdown fix */
+.lang-dropdown {
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
