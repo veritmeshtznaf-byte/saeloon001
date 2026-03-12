@@ -1,58 +1,48 @@
 // ==============================
-// Saeloon Article Script - Ultimate Fix
+// Saeloon Article Script – Fully Fixed
 // Handles nested collapsibles, TOC, and language switcher
 // ==============================
 
 document.addEventListener("DOMContentLoaded", function() {
 
   // ------------------------------
-  // 1) Collapsible headings (H2/H3)
+  // 1) Collapsible headings (H2/H3 nested)
   // ------------------------------
-  function setMaxHeight(element) {
-    if (!element) return 0;
-    let totalHeight = 0;
-    const children = Array.from(element.children);
-    children.forEach(child => {
-      if (child.classList.contains('collapsible-content') && child.classList.contains('open')) {
-        totalHeight += setMaxHeight(child);
-      }
-    });
-    return element.scrollHeight + totalHeight;
-  }
-
   const headings = document.querySelectorAll('.collapsible-heading');
 
   headings.forEach(heading => {
+    const content = heading.nextElementSibling;
+
+    // Initially hide all contents
+    if(content && content.classList.contains('collapsible-content')) {
+      content.style.display = 'none';
+      content.style.overflow = 'hidden';
+      content.style.transition = 'all 0.3s ease';
+    }
+
     heading.addEventListener('click', function(e) {
       e.preventDefault();
       heading.classList.toggle('open');
 
-      const content = heading.nextElementSibling;
-      if(content && content.classList.contains('collapsible-content')) {
-        content.classList.toggle('open');
+      if(!content) return;
 
-        // Recalculate heights for all parent collapsibles
-        let parent = content.parentElement;
-        while(parent) {
-          const openContent = parent.querySelectorAll('.collapsible-content.open');
-          openContent.forEach(oc => {
-            oc.style.maxHeight = oc.scrollHeight + "px";
-          });
-          parent = parent.parentElement;
-        }
-
-        // Set maxHeight for clicked content
-        if(content.classList.contains('open')) {
-          content.style.maxHeight = setMaxHeight(content) + "px";
-        } else {
-          content.style.maxHeight = null;
-        }
+      if(content.style.display === 'none') {
+        content.style.display = 'block';
+        const height = content.scrollHeight + "px";
+        content.style.height = '0px';
+        setTimeout(() => content.style.height = height, 10);
+      } else {
+        content.style.height = '0px';
+        content.addEventListener('transitionend', function hide() {
+          content.style.display = 'none';
+          content.removeEventListener('transitionend', hide);
+        });
       }
     });
   });
 
   // ------------------------------
-  // 2) Build Table of Contents
+  // 2) Build Table of Contents (works for H2/H3)
   // ------------------------------
   const tocContainer = document.getElementById('toc');
   if(tocContainer) {
@@ -86,16 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // ------------------------------
-  // 4) Prevent scroll to top for #
-  // ------------------------------
-  document.addEventListener("click", function(e) {
-    const link = e.target.closest("a");
-    if (!link) return;
-    if (link.getAttribute("href") === "#") e.preventDefault();
-  });
-
-  // ------------------------------
-  // 5) Close language menu if click outside
+  // 4) Close language menu if click outside
   // ------------------------------
   document.addEventListener('click', function(e) {
     if(langList && !langList.contains(e.target) && e.target !== langButton) {
@@ -104,12 +85,10 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // ------------------------------
-  // 6) Recalculate open collapsibles on window resize
+  // 5) Prevent page scroll to top for #
   // ------------------------------
-  window.addEventListener('resize', () => {
-    document.querySelectorAll('.collapsible-content.open').forEach(content => {
-      content.style.maxHeight = setMaxHeight(content) + "px";
-    });
+  document.querySelectorAll('a[href="#"]').forEach(a => {
+    a.addEventListener('click', e => e.preventDefault());
   });
 
 });
